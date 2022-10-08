@@ -238,35 +238,6 @@ class Bot(commands.Bot):
             if CONSOLE:
                 print(send_msg)
 
-
-    @commands.command(name="userbalance",aliases=["ub"])
-    async def check_user(self, ctx: commands.Context):
-        if self.is_admin(ctx.author):                
-            try:                
-                user_destination = ctx.message.content.lower().split("!userbalance ")[1].split(" ")[0]
-                if user_destination.startswith('@'):
-                    user_destination = user_destination[1:]
-                if user_destination in self.user_dict.keys():
-                    send_msg = f'@{ctx.author.name} The balance of {user_destination} is {self.user_dict[user_destination]}'
-                    if not SILENT:
-                        await ctx.send(send_msg)
-                    if CONSOLE:
-                        print(send_msg)
-                else:
-                    send_msg = f'@{ctx.author.name} The user {user_destination} is not in the database.'
-                    if not SILENT:
-                        await ctx.send(send_msg)
-                    if CONSOLE:
-                        print(send_msg)
-            except Exception:
-                print(traceback.format_exc())
-                send_msg = f'@{ctx.author.name} Wierd Error @disneylandpimp. Please fix this in the console!'
-                if not SILENT:
-                    await ctx.send(send_msg)
-                if CONSOLE:
-                    print(send_msg)
-
-
 #info / help command
     @commands.command(name="info", aliases=["help"])
     async def print_info(self, ctx: commands.Context):
