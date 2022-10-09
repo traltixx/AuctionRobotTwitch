@@ -24,7 +24,7 @@ class Bot(commands.Bot):
         super().__init__(token=TOKEN, prefix='!', initial_channels=[CHANNEL]) 
         self.user_dict = {}        
         self.reset_auction()
-        self.ctx_command = None                      
+        self.ctx_command = None                     
         if os.path.exists(FILEDB):
             fp = open(FILEDB,'rb')
             self.user_dict = pickle.load(fp)
@@ -113,6 +113,7 @@ class Bot(commands.Bot):
 
         try:
             if BITMODE:
+                total_bits = 0
                 for msg_split in message.content.split(' '):
                     msg_check = msg_split.lower().strip()
                     if len(msg_check) > 2:
@@ -121,9 +122,19 @@ class Bot(commands.Bot):
                             #print(msg_check)
                         for msg_c in re.findall("^("+"|".join(CHEERMOTES)+")(\d+?)$",msg_check,re.IGNORECASE):
                             print(user + " CHEERED "+msg_c[1]+ " BITS")
-                            ammount = int(msg_c[1])
-                            self.give_amm(user,amount)
-                            self.save_db()
+                            amount = int(msg_c[1])
+                            total_bits+=amount
+                if total_bits > 0:
+                    self.give_amm(user,amount)
+                    self.save_db()
+
+                    if user in self.user_dict.keys():
+                        send_msg = f'@{user} {total_bits} added to your balance. Your total banked is  {self.user_dict[user]}'
+                        if not SILENT:
+                            await ctx.send(send_msg)
+                        if CONSOLE:
+                            print(send_msg)                    
+
             else:
                 self.give_amm(user,10)
                 self.save_db()
@@ -134,7 +145,6 @@ class Bot(commands.Bot):
                 await ctx.send(send_msg)
             if CONSOLE:
                 print(send_msg)
-
 
         await self.handle_commands(message)
 
@@ -237,6 +247,7 @@ class Bot(commands.Bot):
                 await ctx.send(send_msg)
             if CONSOLE:
                 print(send_msg)
+
 
 #info / help command
     @commands.command(name="info", aliases=["help"])
