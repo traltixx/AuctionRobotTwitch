@@ -12,11 +12,18 @@ The Bitmode global var controls if the balance is increased by bits or by normal
 Available commands:
  - !start = this is to start the auction. This command is available for mods and the streamer themself only.
  - !end = this is to end the auction and not deduct or penalize anything. This command is available for mods and the streamer themself only.
- - !give <amount> <username> = gives the user the amount. This command is available for mods and the streamer themself only.
- - !setmode [bits|demo] = changes the mode to either demo or bits. Demo mode increases the balance by chatting. Bits mode increases the balance by cheering bits
+ - !give <amount> <username> or !g <amount> <username>  = gives the user the amount. This command is available for mods and the streamer themself only.
+ - !setmode [bits|demo] or !sm [bits|demo]= changes the mode to either demo or bits. Demo mode increases the balance by chatting. Bits mode increases the balance by cheering bits
  - !info or !help = prints some help messages about basic usage.
- - !balance = gives the balance of the person who ran the command. 
- - !userbalance <username> = gives the balance of the username in the command.
- - !currentbid = Gives info on the current auction and highest bidder (if any)
+ - !balance or !b = gives the balance of the person who ran the command. 
+ - !userbalance <username> or !ub <username> = gives the balance of the username in the command.
+ - !currentbid or !cb = Gives info on the current auction and highest bidder (if any)
  - !bid = bid at 10 more than the highest bidder
  - !bid <amount> = bid at the given amount
+ 
+ 
+ Donate :
+ 
+ ETH : 0xa63dc75a049b32b2a71ca50813cba003610eb4eb
+ BTC : 12trQbgoKCmYsGcAKr9Kkq8gRmAsfznhNS
+ LTC : MKBCrPxmc118BVPCLJBYXCJ5i5DZBzPy66
