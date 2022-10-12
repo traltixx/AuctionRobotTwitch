@@ -25,5 +25,7 @@ Available commands:
  Donate :
  
  ETH : 0xa63dc75a049b32b2a71ca50813cba003610eb4eb
+ 
  BTC : 12trQbgoKCmYsGcAKr9Kkq8gRmAsfznhNS
+ 
  LTC : MKBCrPxmc118BVPCLJBYXCJ5i5DZBzPy66
